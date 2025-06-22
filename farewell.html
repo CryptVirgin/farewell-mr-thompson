@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Farewell Mr. P Thompson - Grade 5 Legend</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #833AB4, #FD1D1D, #FCAF45); /* Insta-inspired gradient */
+            font-family: 'Helvetica Neue', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-attachment: fixed;
+            position: relative;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            touch-action: manipulation; /* Optimize touch for iOS */
+        }
+        .app-container {
+            width: 100%;
+            max-width: 414px; /* Mobile phone screen width for Insta feel */
+            height: 100vh;
+            max-height: 736px; /* Mobile phone screen height */
+            background: #000000; /* Dark mode for sleekness */
+            border-radius: 10px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            scrollbar-width: none; /* Hide scrollbar for Chrome */
+            -ms-overflow-style: none; /* Hide scrollbar for IE */
+            z-index: 5;
+        }
+        .app-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Safari */
+        }
+        header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .music-button {
+            position: absolute;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .music-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        .stories {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 5px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+        .stories::-webkit-scrollbar {
+            display: none;
+        }
+        .story {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: calc(var(--delay) * 0.2s);
+            cursor: pointer;
+            transition: transform 0.2s;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+        }
+        .story:hover {
+            transform: scale(1.05);
+        }
+        .story-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); /* Insta story gradient */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 5px;
+            padding: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .story-inner {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #1A1A1A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+        }
+        .story p {
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0;
+            max-width: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .posts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px;
+        }
+        .post {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: calc(var(--delay) * 0.1s);
+            backdrop-filter: blur(3px);
+            position: relative; /* For positioning heart shower */
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .post-header .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #F58529, #DD2A7B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 16px;
+            color: white;
+        }
+        .post-header .username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .post-content {
+            padding: 0 0 10px 0;
+        }
+        .post-image {
+            width: 100%;
+            height: 400px;
+            background: #333;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            position: relative; /* For heart shower positioning */
+            overflow: hidden;
+            cursor: pointer; /* Indicate clickable for zoom */
+        }
+        .post-image.zoomed {
+            transform: scale(1.5); /* Increased zoom-in effect */
+            transition: transform 0.5s ease;
+        }
+        .post:hover .post-image:not(.zoomed) {
+            transform: scale(1.03);
+        }
+        .post-text {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 10px 10px 5px;
+            font-weight: 400;
+        }
+        .post-footer {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .post-footer .likes {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .post-footer .likes:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+        .post-footer .likes::before {
+            content: "❤️";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        .post-footer .comments {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .post-footer .comments:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+        .post-footer .comments::before {
+            content: "💬";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .hashtags {
+            margin: 5px 10px 0;
+            font-size: 13px;
+            color: #4DA6FF;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        canvas.fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        /* Side Innovations - Hidden on Mobile for iPhone Optimization */
+        @media (min-width: 768px) {
+            .side-left, .side-right {
+                position: fixed;
+                top: 0;
+                height: 100vh;
+                width: calc((100vw - 414px) / 2);
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+            .side-left {
+                left: 0;
+            }
+            .side-right {
+                right: 0;
+            }
+            .side-message {
+                background: rgba(0, 0, 0, 0.6);
+                padding: 15px 25px;
+                border-radius: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                margin: 10px 0;
+                text-align: center;
+                animation: floatUpDown 3s ease-in-out infinite alternate;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                max-width: 80%;
+                transition: opacity 1s ease-in-out; /* Smoother, longer fade for soothing effect */
+            }
+            @keyframes floatUpDown {
+                from { transform: translateY(0); }
+                to { transform: translateY(20px); }
+            }
+            .side-stickers {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+                width: 80%;
+            }
+            .sticker {
+                width: 60px;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                animation: rotateSticker 5s linear infinite;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s;
+            }
+            .sticker:hover {
+                transform: scale(1.2);
+            }
+            @keyframes rotateSticker {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .side-title {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FFD700;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+                margin-bottom: 20px;
+                animation: glowSide 2s ease-in-out infinite alternate;
+            }
+            @keyframes glowSide {
+                from { text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3); }
+                to { text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4); }
+            }
+        }
+        @media (max-width: 767px) {
+            .side-left, .side-right {
+                display: none; /* Hide side elements on mobile for better focus */
+            }
+        }
+        /* Comments Modal Styling for Instagram-like Feel */
+        .comments-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .comments-container {
+            background: #1A1A1A;
+            width: 90%;
+            max-width: 400px;
+            height: 70vh;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        .comments-header {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .comments-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+        .comments-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .comments-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .comments-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+        .comment {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        .comment-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #F58529, #DD2A7B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 10px;
+            color: white;
+        }
+        .comment-content {
+            flex: 1;
+        }
+        .comment-username {
+            font-weight: 600;
+            font-size: 14px;
+            margin: 0 0 3px 0;
+        }
+        .comment-text {
+            font-size: 14px;
+            line-height: 1.3;
+            margin: 0;
+        }
+        .comments-footer {
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .close-comments {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.2s;
+        }
+        .close-comments:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+        /* Likes Modal Styling for Instagram-like Feel */
+        .likes-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .likes-container {
+            background: #1A1A1A;
+            width: 90%;
+            max-width: 400px;
+            height: 70vh;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        .likes-header {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .likes-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+        .likes-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .likes-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .likes-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+        .like {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .like-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #F58529, #DD2A7B);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 10px;
+            color: white;
+        }
+        .like-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .likes-footer {
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .close-likes {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.2s;
+        }
+        .close-likes:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+        /* Heart Shower Animation */
+        .heart-shower {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #FF0000;
+            opacity: 0;
+            animation: heartFloat 1s ease-out forwards;
+        }
+        @keyframes heartFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50px) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+        .gif-container {
+            display: flex;
+            overflow-x: auto;
+            margin: 10px 0;
+            padding: 5px 10px;
+            gap: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            background: rgba(0, 0, 0, 0.2); /* Add a subtle background to avoid visual glitches */
+            border-radius: 8px;
+        }
+        .gif-container::-webkit-scrollbar {
+            display: none;
+        }
+        .gif-item {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            flex: 0 0 auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: #333; /* Fallback background if image fails to load */
+        }
+        /* Ripple and Melting Heart Drop Effect for Background Click */
+        .ripple-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1; /* Behind other elements but above background */
+            overflow: hidden;
+        }
+        .ripple-group {
+            position: absolute;
+            pointer-events: none;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1); /* Lighter, water-like tone */
+            transform: scale(0);
+            animation: waterRipple 2.5s ease-out forwards;
+            pointer-events: none;
+            border: 2px solid rgba(255, 255, 255, 0.3); /* Water-like border */
+            opacity: 0.6; /* Softer initial opacity */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 
+                        0 0 20px rgba(200, 200, 255, 0.2), 
+                        inset 0 0 10px rgba(255, 255, 255, 0.2); /* Subtle blue-white glow */
+        }
+        @keyframes waterRipple {
+            0% {
+                transform: scale(0);
+                opacity: 0.6;
+                filter: blur(2px); /* Soft edge for water feel */
+            }
+            30% {
+                opacity: 0.5;
+                transform: scale(0.7);
+                filter: blur(3px);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 
+                            0 0 30px rgba(200, 200, 255, 0.3), 
+                            inset 0 0 15px rgba(255, 255, 255, 0.3);
+            }
+            60% {
+                opacity: 0.3;
+                transform: scale(1.4);
+                filter: blur(4px);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 
+                            0 0 40px rgba(200, 200, 255, 0.2), 
+                            inset 0 0 20px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+                filter: blur(6px);
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.1), 
+                            0 0 50px rgba(200, 200, 255, 0.1), 
+                            inset 0 0 25px rgba(255, 255, 255, 0.1);
+            }
+        }
+        .melting-heart-drop {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            font-size: 24px;
+            color: rgba(255, 0, 0, 0.9); /* Deeper heart red color */
+            animation: heartMelt 2.5s ease-out forwards;
+            pointer-events: none;
+            text-align: center;
+            line-height: 24px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 10px rgba(255, 0, 0, 0.4); /* Glowing heart effect */
+        }
+        @keyframes heartMelt {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+                filter: blur(0px);
+            }
+            50% {
+                transform: translateY(120px) scale(0.7) rotate(10deg);
+                opacity: 0.8;
+                filter: blur(2px);
+            }
+            100% {
+                transform: translateY(250px) scale(0.4) rotate(20deg);
+                opacity: 0;
+                filter: blur(4px);
+            }
+        }
+        /* Bubbling Hearts Effect like Instagram Live */
+        .bubbling-heart {
+            position: absolute;
+            font-size: 30px;
+            color: rgba(255, 0, 0, 0.9); /* Vibrant red */
+            animation: bubbleHeart 1.8s ease-out forwards;
+            pointer-events: none;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.5), 0 0 15px rgba(255, 0, 0, 0.3); /* Glowing effect */
+        }
+        @keyframes bubbleHeart {
+            0% {
+                transform: translateY(0) scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-30px) scale(1.2) rotate(5deg);
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(-60px) scale(0.9) rotate(-5deg) translateX(10px);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translateY(-90px) scale(1.1) rotate(5deg) translateX(-10px);
+                opacity: 0.7;
+            }
+            80% {
+                transform: translateY(-120px) scale(0.8) rotate(-5deg) translateX(5px);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-150px) scale(0.6) rotate(0deg) translateX(-5px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Farewell, Mr. Thompson! 🎉</h1>
+            <button class="music-button" id="musicButton" title="Play Random Music">🎶</button>
+        </header>
+
+        <div class="stories">
+            <div class="story" style="--delay: 1;" data-target="andy-post">
+                <div class="story-circle">
+                    <div class="story-inner">A</div>
+                </div>
+                <p>Andy</p>
+            </div>
+            <div class="story" style="--delay: 2;" data-target="alia-post">
+                <div class="story-circle">
+                    <div class="story-inner">A</div>
+                </div>
+                <p>Alia</p>
+            </div>
+            <div class="story" style="--delay: 3;" data-target="sofia-post">
+                <div class="story-circle">
+                    <div class="story-inner">S</div>
+                </div>
+                <p>Sofia</p>
+            </div>
+        </div>
+
+        <div class="posts">
+            <div class="post" id="andy-post" style="--delay: 1;">
+                <div class="post-header">
+                    <div class="avatar">A</div>
+                    <div class="username">andy.grade5</div>
+                </div>
+                <div class="post-content">
+                    <div class="post-image" style="background-image: url('images/andy.jpeg');">
+                        <div class="heart-shower" id="andy-heart-shower"></div>
+                    </div>
+                    
+                    <p class="post-text">Mr. Thompson, ur the coolest teacher! Ur guitar jams were epic, and ur French lessons made us love the language. Gonna miss u! 😢🎸</p>
+                    <div class="hashtags">#FarewellMrT #CliffsidePS #FrenchMaestro</div>
+                </div>
+                <div class="post-footer">
+                    <div class="likes" data-likes-id="andy-likes" data-heart-id="andy-heart-shower">42 Likes</div>
+                    <div class="comments" data-comments-id="andy-comments">8 Comments</div>
+                </div>
+            </div>
+            <div class="post" id="alia-post" style="--delay: 2;">
+                <div class="post-header">
+                    <div class="avatar">A</div>
+                    <div class="username">alia_5thgrade</div>
+                </div>
+                <div class="post-content">
+                    <div class="post-image" style="background-image: url('images/alia.jpeg');">
+                        <div class="heart-shower" id="alia-heart-shower"></div>
+                    </div>
+                    <p class="post-text">Ur piano tunes were magical, Mr. Thompson! And ur drama skills turned class into a stage. We’ll miss u tons! 🎹🎭</p>
+                    <div class="hashtags">#TeacherHero #Grade5Vibes #DramaKing</div>
+                </div>
+                <div class="post-footer">
+                    <div class="likes" data-likes-id="alia-likes" data-heart-id="alia-heart-shower">38 Likes</div>
+                    <div class="comments" data-comments-id="alia-comments">6 Comments</div>
+                </div>
+            </div>
+            <div class="post" id="sofia-post" style="--delay: 3;">
+                <div class="post-header">
+                    <div class="avatar">S</div>
+                    <div class="username">sofia.g5</div>
+                </div>
+                <div class="post-content">
+                    <div class="post-image" style="background-image: url('images/sofia.jpeg');">
+                        <div class="heart-shower" id="sofia-heart-shower"></div>
+                    </div>
+                    <p class="post-text">Ur violin melodies were 🔥, Mr. Thompson! And teaching French with drama was so cool. Thank u for being amazing! #Legend 🎻🇫🇷</p>
+                    <div class="hashtags">#CliffsideLegend #MusicMaster #AuRevoir</div>
+                </div>
+                <div class="post-footer">
+                    <div class="likes" data-likes-id="sofia-likes" data-heart-id="sofia-heart-shower">45 Likes</div>
+                    <div class="comments" data-comments-id="sofia-comments">10 Comments</div>
+                </div>
+            </div>
+            <div class="post" id="grade5-post" style="--delay: 4;">
+                <div class="post-header">
+                    <div class="avatar">G5</div>
+                    <div class="username">grade5_crew</div>
+                </div>
+                <div class="post-content">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80');">
+                        <div class="heart-shower" id="grade5-heart-shower"></div>
+                    </div>
+                    <p class="post-text">To our hero, Mr. Thompson: ur music on guitar, piano & violin, plus ur drama & French skills changed us forever. Shine on! 🌟🎶</p>
+                    <div class="hashtags">#ForeverHero #TeacherLove #Grade5Forever</div>
+                </div>
+                <div class="post-footer">
+                    <div class="likes" data-likes-id="grade5-likes" data-heart-id="grade5-heart-shower">60 Likes</div>
+                    <div class="comments" data-comments-id="grade5-comments">15 Comments</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>With 💖 from Grade 5, Cliffside Public School, TDSB - 2024-25</p>
+        </footer>
+    </div>
+
+    <div class="side-left">
+        <div class="side-title">Mr. Thompson Rocks!</div>
+        <div class="side-message" id="left-message-1" style="background: linear-gradient(45deg, rgba(255, 215, 0, 0.6), rgba(255, 165, 0, 0.6));">Your music was 🎶!</div>
+        <div class="side-message" id="left-message-2" style="background: linear-gradient(45deg, rgba(255, 105, 180, 0.6), rgba(255, 20, 147, 0.6)); animation-delay: 1s;">French lessons, magnifique! 🇫🇷</div>
+        <div class="side-stickers">
+            <div class="sticker">🎸</div>
+            <div class="sticker">🎹</div>
+            <div class="sticker">🎻</div>
+        </div>
+    </div>
+    <div class="side-right">
+        <div class="side-title">Grade 5 Memories!</div>
+        <div class="side-message" id="right-message-1" style="background: linear-gradient(45deg, rgba(0, 191, 255, 0.6), rgba(0, 128, 128, 0.6));">Drama skills were 🔥!</div>
+        <div class="side-message" id="right-message-2" style="background: linear-gradient(45deg, rgba(50, 205, 50, 0.6), rgba(34, 139, 34, 0.6)); animation-delay: 1.5s;">Ur the BEST teacher! 🌟</div>
+        <div class="side-stickers">
+            <div class="sticker">🎭</div>
+            <div class="sticker">🎶</div>
+            <div class="sticker">❤️</div>
+        </div>
+    </div>
+
+    <div class="fireworks-container">
+        <canvas id="fireworksCanvas" class="fireworks"></canvas>
+    </div>
+
+    <!-- Ripple Container for Melting Heart Effect -->
+    <div class="ripple-container" id="rippleContainer"></div>
+
+    <!-- Comments Modals for Each Post -->
+    <div class="comments-modal" id="andy-comments">
+        <div class="comments-container">
+            <div class="comments-header">Comments on Andy's Post</div>
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">J</div>
+                    <div class="comment-content">
+                        <p class="comment-username">jake.g5</p>
+                        <p class="comment-text">Totally agree, Andy! His guitar sessions were the best! 🎸</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">M</div>
+                    <div class="comment-content">
+                        <p class="comment-username">mia_5th</p>
+                        <p class="comment-text">Mr. Thompson’s French lessons were so fun! Gonna miss him too! 😢</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">L</div>
+                    <div class="comment-content">
+                        <p class="comment-username">liam.grade5</p>
+                        <p class="comment-text">Remember when he played that cool song? Epic! 🎶</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">E</div>
+                    <div class="comment-content">
+                        <p class="comment-username">emma_cliffside</p>
+                        <p class="comment-text">Merci, Mr. T, for everything! 🇫🇷</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">N</div>
+                    <div class="comment-content">
+                        <p class="comment-username">noah.g5</p>
+                        <p class="comment-text">Best teacher ever! His music made class awesome! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">O</div>
+                    <div class="comment-content">
+                        <p class="comment-username">olivia_5</p>
+                        <p class="comment-text">I’m so sad he’s leaving! French won’t be the same! 😭</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">C</div>
+                    <div class="comment-content">
+                        <p class="comment-username">chloe.ps</p>
+                        <p class="comment-text">Andy, u said it! His guitar was pure magic! 🎸</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">S</div>
+                    <div class="comment-content">
+                        <p class="comment-username">sam_grade5</p>
+                        <p class="comment-text">Miss u already, Mr. Thompson! Thanks for the tunes! 🎶</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comments-footer">
+                <button class="close-comments" onclick="hideComments('andy-comments')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-modal" id="alia-comments">
+        <div class="comments-container">
+            <div class="comments-header">Comments on Alia's Post</div>
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">R</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ryan.g5</p>
+                        <p class="comment-text">His piano was unreal! Best teacher ever, Alia! 🎹</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">I</div>
+                    <div class="comment-content">
+                        <p class="comment-username">isabella_5th</p>
+                        <p class="comment-text">Drama with Mr. T was like being in a movie! 🎭</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">E</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ethan_cliff</p>
+                        <p class="comment-text">Totally gonna miss his tunes and acting tips! 😢</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">A</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ava.grade5</p>
+                        <p class="comment-text">Mr. Thompson made drama so cool! Best memories! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">L</div>
+                    <div class="comment-content">
+                        <p class="comment-username">lily_ps</p>
+                        <p class="comment-text">Piano melodies were my fave! Miss u, Mr. T! 🎹</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">D</div>
+                    <div class="comment-content">
+                        <p class="comment-username">daniel.g5</p>
+                        <p class="comment-text">Alia, u nailed it! His drama class was everything! 🎭</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comments-footer">
+                <button class="close-comments" onclick="hideComments('alia-comments')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-modal" id="sofia-comments">
+        <div class="comments-container">
+            <div class="comments-header">Comments on Sofia's Post</div>
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">T</div>
+                    <div class="comment-content">
+                        <p class="comment-username">tyler.g5</p>
+                        <p class="comment-text">Violin was fire, Sofia! Mr. T is a legend! 🎻</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">G</div>
+                    <div class="comment-content">
+                        <p class="comment-username">grace_5th</p>
+                        <p class="comment-text">French with drama was the best combo ever! 🇫🇷</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">C</div>
+                    <div class="comment-content">
+                        <p class="comment-username">carter_cliffside</p>
+                        <p class="comment-text">Mr. Thompson’s music always made me smile! 😊</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">H</div>
+                    <div class="comment-content">
+                        <p class="comment-username">hannah.g5</p>
+                        <p class="comment-text">Merci, Mr. T, for making learning so fun! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">M</div>
+                    <div class="comment-content">
+                        <p class="comment-username">mason_grade5</p>
+                        <p class="comment-text">Violin sessions were epic! Gonna miss u! 🎻</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">Z</div>
+                    <div class="comment-content">
+                        <p class="comment-username">zoe.ps</p>
+                        <p class="comment-text">Sofia, so true! French drama was amazing! 🎭</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">B</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ben_5thgrade</p>
+                        <p class="comment-text">Best teacher ever! Music and French forever! 🎶</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">E</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ella.cliff</p>
+                        <p class="comment-text">Mr. T, ur violin made class magical! 😢</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">W</div>
+                    <div class="comment-content">
+                        <p class="comment-username">william_g5</p>
+                        <p class="comment-text">Au revoir, Mr. Thompson! Thanks for everything! 🇫🇷</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">S</div>
+                    <div class="comment-content">
+                        <p class="comment-username">sophia.5</p>
+                        <p class="comment-text">Sofia, u said it! He’s the best teacher ever! 🌟</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comments-footer">
+                <button class="close-comments" onclick="hideComments('sofia-comments')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-modal" id="grade5-comments">
+        <div class="comments-container">
+            <div class="comments-header">Comments on Grade 5 Crew's Post</div>
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">K</div>
+                    <div class="comment-content">
+                        <p class="comment-username">kyle.g5</p>
+                        <p class="comment-text">Mr. T, ur music and drama changed us! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">N</div>
+                    <div class="comment-content">
+                        <p class="comment-username">natalie_5th</p>
+                        <p class="comment-text">Merci for being our hero, Mr. Thompson! 🇫🇷</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">A</div>
+                    <div class="comment-content">
+                        <p class="comment-username">aiden_cliffside</p>
+                        <p class="comment-text">Guitar, piano, violin—all amazing! Miss u! 🎶</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">C</div>
+                    <div class="comment-content">
+                        <p class="comment-username">clara.g5</p>
+                        <p class="comment-text">Drama with u was the best part of Grade 5! 🎭</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">J</div>
+                    <div class="comment-content">
+                        <p class="comment-username">julia_grade5</p>
+                        <p class="comment-text">Your French lessons inspired us all! Merci! 😊</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">L</div>
+                    <div class="comment-content">
+                        <p class="comment-username">lucas.ps</p>
+                        <p class="comment-text">Shine on, Mr. T! Ur the best teacher ever! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">M</div>
+                    <div class="comment-content">
+                        <p class="comment-username">maya_5thgrade</p>
+                        <p class="comment-text">Music with u was pure magic! Gonna miss it! 🎹</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">O</div>
+                    <div class="comment-content">
+                        <p class="comment-username">owen.cliff</p>
+                        <p class="comment-text">Drama, French, music—u did it all! Thanks! 🎭</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">V</div>
+                    <div class="comment-content">
+                        <p class="comment-username">violet_g5</p>
+                        <p class="comment-text">Au revoir, Mr. Thompson! Ur our hero! 🇫🇷</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">G</div>
+                    <div class="comment-content">
+                        <p class="comment-username">gabriel.5</p>
+                        <p class="comment-text">Your violin made every day special! 🎻</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">R</div>
+                    <div class="comment-content">
+                        <p class="comment-username">ruby_grade5</p>
+                        <p class="comment-text">We’ll never forget ur art and tunes! 🎨</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">H</div>
+                    <div class="comment-content">
+                        <p class="comment-username">harper_cliff</p>
+                        <p class="comment-text">Best Grade 5 memories with u, Mr. T! 😢</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">E</div>
+                    <div class="comment-content">
+                        <p class="comment-username">elijah.g5</p>
+                        <p class="comment-text">Guitar jams were the highlight of class! 🎸</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">S</div>
+                    <div class="comment-content">
+                        <p class="comment-username">scarlett_5</p>
+                        <p class="comment-text">Merci for making learning epic, Mr. T! 🌟</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-avatar">D</div>
+                    <div class="comment-content">
+                        <p class="comment-username">dylan_ps</p>
+                        <p class="comment-text">Forever our fave teacher! Shine on! 🎶</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comments-footer">
+                <button class="close-comments" onclick="hideComments('grade5-comments')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Likes Modals for Each Post -->
+    <div class="likes-modal" id="andy-likes">
+        <div class="likes-container">
+            <div class="likes-header">Liked by 42 People</div>
+            <div class="likes-list">
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">jake.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mia_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">liam.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">emma_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">noah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">olivia_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">chloe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sam_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">T</div>
+                    <div class="like-username">tyler.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">grace_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">carter_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">hannah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mason_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">Z</div>
+                    <div class="like-username">zoe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">B</div>
+                    <div class="like-username">ben_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ella.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">W</div>
+                    <div class="like-username">william_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sophia.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">K</div>
+                    <div class="like-username">kyle.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">natalie_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">aiden_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">clara.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">julia_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lucas.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">maya_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">owen.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">V</div>
+                    <div class="like-username">violet_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">gabriel.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">R</div>
+                    <div class="like-username">ruby_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">harper_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">elijah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">scarlett_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">dylan_ps</div>
+                </div>
+            </div>
+            <div class="likes-footer">
+                <button class="close-likes" onclick="hideLikes('andy-likes')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="likes-modal" id="alia-likes">
+        <div class="likes-container">
+            <div class="likes-header">Liked by 38 People</div>
+            <div class="likes-list">
+                <div class="like">
+                    <div class="like-avatar">I</div>
+                    <div class="like-username">isabella_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ethan_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">ava.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lily_ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">daniel.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">jake.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mia_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">liam.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">emma_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">noah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">olivia_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">chloe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sam_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">T</div>
+                    <div class="like-username">tyler.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">grace_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">carter_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">hannah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mason_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">Z</div>
+                    <div class="like-username">zoe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">B</div>
+                    <div class="like-username">ben_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ella.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">W</div>
+                    <div class="like-username">william_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sophia.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">K</div>
+                    <div class="like-username">kyle.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">natalie_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">aiden_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">clara.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">julia_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lucas.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">maya_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">owen.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">V</div>
+                    <div class="like-username">violet_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">gabriel.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">R</div>
+                    <div class="like-username">ruby_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">harper_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">elijah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">scarlett_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">dylan_ps</div>
+                </div>
+            </div>
+            <div class="likes-footer">
+                <button class="close-likes" onclick="hideLikes('alia-likes')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="likes-modal" id="sofia-likes">
+        <div class="likes-container">
+            <div class="likes-header">Liked by 45 People</div>
+            <div class="likes-list">
+                <div class="like">
+                    <div class="like-avatar">T</div>
+                    <div class="like-username">tyler.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">grace_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">carter_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">hannah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mason_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">Z</div>
+                    <div class="like-username">zoe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">B</div>
+                    <div class="like-username">ben_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ella.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">W</div>
+                    <div class="like-username">william_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sophia.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">jake.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mia_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">liam.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">emma_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">noah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">olivia_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">chloe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sam_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">K</div>
+                    <div class="like-username">kyle.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">natalie_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">aiden_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">clara.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">julia_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lucas.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">maya_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">owen.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">V</div>
+                    <div class="like-username">violet_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">gabriel.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">R</div>
+                    <div class="like-username">ruby_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">harper_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">elijah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">scarlett_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">dylan_ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">I</div>
+                    <div class="like-username">isabella_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ethan_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">ava.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lily_ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">daniel.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">andy.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">alia_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sofia.g5</div>
+                </div>
+            </div>
+            <div class="likes-footer">
+                <button class="close-likes" onclick="hideLikes('sofia-likes')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="likes-modal" id="grade5-likes">
+        <div class="likes-container">
+            <div class="likes-header">Liked by 60 People</div>
+            <div class="likes-list">
+                <div class="like">
+                    <div class="like-avatar">K</div>
+                    <div class="like-username">kyle.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">natalie_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">aiden_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">clara.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">julia_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lucas.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">maya_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">owen.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">V</div>
+                    <div class="like-username">violet_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">gabriel.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">R</div>
+                    <div class="like-username">ruby_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">harper_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">elijah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">scarlett_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">dylan_ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">I</div>
+                    <div class="like-username">isabella_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ethan_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">ava.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lily_ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">daniel.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">andy.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">alia_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sofia.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">jake.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mia_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">liam.grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">emma_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">noah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">olivia_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">chloe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sam_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">T</div>
+                    <div class="like-username">tyler.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">grace_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">carter_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">hannah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">mason_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">Z</div>
+                    <div class="like-username">zoe.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">B</div>
+                    <div class="like-username">ben_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">ella.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">W</div>
+                    <div class="like-username">william_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">sophia.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">K</div>
+                    <div class="like-username">kyle.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">N</div>
+                    <div class="like-username">natalie_5th</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">A</div>
+                    <div class="like-username">aiden_cliffside</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">C</div>
+                    <div class="like-username">clara.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">J</div>
+                    <div class="like-username">julia_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">L</div>
+                    <div class="like-username">lucas.ps</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">M</div>
+                    <div class="like-username">maya_5thgrade</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">O</div>
+                    <div class="like-username">owen.cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">V</div>
+                    <div class="like-username">violet_g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">G</div>
+                    <div class="like-username">gabriel.5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">R</div>
+                    <div class="like-username">ruby_grade5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">H</div>
+                    <div class="like-username">harper_cliff</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">E</div>
+                    <div class="like-username">elijah.g5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">S</div>
+                    <div class="like-username">scarlett_5</div>
+                </div>
+                <div class="like">
+                    <div class="like-avatar">D</div>
+                    <div class="like-username">dylan_ps</div>
+                </div>
+            </div>
+            <div class="likes-footer">
+                <button class="close-likes" onclick="hideLikes('grade5-likes')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop preload="auto">
+        <source id="musicSource" src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Fireworks Animation on Canvas
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let fireworks = [];
+
+        class Firework {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height;
+                this.targetY = Math.random() * (canvas.height / 2);
+                this.speed = Math.random() * 3 + 2;
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.particles = [];
+                this.exploded = false;
+                this.lifetime = Math.random() * 60 + 60;
+            }
+            update() {
+                if (!this.exploded) {
+                    this.y -= this.speed;
+                    if (this.y <= this.targetY) {
+                        this.explode();
+                        this.exploded = true;
+                    }
+                } else {
+                    this.lifetime--;
+                    this.particles.forEach(p => {
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.05; // Gravity
+                        p.alpha -= 0.01;
+                    });
+                }
+                return this.lifetime > 0;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                if (!this.exploded) {
+                    ctx.fillRect(this.x, this.y, 3, 3);
+                } else {
+                    this.particles.forEach(p => {
+                        ctx.globalAlpha = p.alpha;
+                        ctx.fillRect(p.x, p.y, 2, 2);
+                    });
+                    ctx.globalAlpha = 1;
+                }
+            }
+            explode() {
+                for (let i = 0; i < 50; i++) {
+                    const angle = (Math.PI * 2) * (i / 50);
+                    const speed = Math.random() * 4 + 1;
+                    this.particles.push({
+                        x: this.x,
+                        y: this.y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - 2,
+                        alpha: 1
+                    });
+                }
+            }
+        }
+
+        function animateFireworks() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (Math.random() < 0.1) {
+                fireworks.push(new Firework());
+            }
+            fireworks = fireworks.filter(fw => {
+                if (fw.update()) {
+                    fw.draw();
+                    return true;
+                }
+                return false;
+            });
+            requestAnimationFrame(animateFireworks);
+        }
+        animateFireworks();
+
+        // Resize Canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Clickable Stories to Scroll to Posts
+        document.querySelectorAll('.story').forEach(story => {
+            story.addEventListener('click', () => {
+                const targetId = story.getAttribute('data-target');
+                const targetPost = document.getElementById(targetId);
+                if (targetPost) {
+                    targetPost.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+            story.addEventListener('touchstart', () => {
+                const targetId = story.getAttribute('data-target');
+                const targetPost = document.getElementById(targetId);
+                if (targetPost) {
+                    targetPost.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Rotating Messages for Mr. Thompson on Side Panels
+        const leftMessages = [
+            "Your guitar riffs rocked our world, Mr. Thompson! 🎸",
+            "Merci beaucoup for the best French lessons, Professeur! 🇫🇷",
+            "Your art sketches inspired us to create, Maestro! 🎨",
+            "Piano tunes that touched our hearts, you’re the best! 🎹",
+            "Ton charisme en classe était incroyable, Monsieur! 🌟",
+            "Violin vibes that made us dance, pure magic! 🎻",
+            "Your drama flair turned lessons into Broadway! 🎭",
+            "French with a twist of fun, merci for everything! 😊",
+            "Your creativity painted our Grade 5 with joy! 🖌️",
+            "Strumming life lessons with every chord, legend! 🎸",
+            "Votre passion pour l’enseignement est inégalée! 🇫🇷",
+            "Art class with you was a masterpiece, Sir! 🎨",
+            "Your music was the soundtrack of our year! 🎶",
+            "Drama king, you made every story epic! 👑",
+            "Merci for teaching us to dream en français! 🌈",
+            "Your violin sang to our souls, pure genius! 🎻",
+            "Canvas of kindness, you’re our favorite artist! 🖼️",
+            "French lessons with flair, vous êtes le meilleur! 🇫🇷",
+            "Your piano keys unlocked our imagination! 🎹",
+            "Acting out history with you was a blast! 🎭",
+            "Guitar hero, your melodies will echo forever! 🎸",
+            "Ton humour en classe était toujours hilarant! 😂",
+            "Your art made us see the world in color! 🌍",
+            "Music with you was a Grade 5 symphony! 🎶",
+            "Drama lessons that stole the show, bravo! 👏",
+            // ... Imagine this list expanded to 500 messages with similar themes of music, art, drama, French, and love ...
+            "Your teaching was a work of art, forever inspired! 🎨",
+            "Merci pour ton inspiration sans fin, Prof! 🇫🇷"
+        ];
+
+        const rightMessages = [
+            "Drama skills that lit up our classroom, wow! 🔥",
+            "You’re the BEST teacher in the universe, Mr. T! 🌟",
+            "Votre violon a enchanté nos cœurs, incroyable! 🎻",
+            "Guitar jams that made learning a party! 🎸",
+            "Your art turned doodles into dreams, magic! 🖌️",
+            "French class was a voyage with you, merci! 🇫🇷",
+            "Piano melodies that calmed every storm! 🎹",
+            "Acting with you felt like Hollywood, star! 🎭",
+            "Ton énergie était contagieuse, Monsieur T! ⚡",
+            "Your sketches were Grade 5 treasures! 🎨",
+            "Music lessons with you were pure joy! 🎶",
+            "Drama master, every line was epic with you! 👑",
+            "Merci pour ton inspiration sans fin, Prof! 🇫🇷",
+            "Your violin made every day brighter! 🎻",
+            "Art with heart, that’s your style, Sir! ❤️",
+            "Strumming wisdom into every lesson, hero! 🎸",
+            "Votre français nous a ouvert des portes! 🌍",
+            "Piano magic that we’ll never forget! 🎹",
+            "Stage presence in every word, legend! 🎭",
+            "Your creativity was our Grade 5 superpower! 💥",
+            "Ton rire était la meilleure musique! 😂",
+            "Art lessons that painted our futures! 🖼️",
+            "Music maestro, you’re our idol forever! 🎶",
+            "Drama with you was pure Grade 5 gold! 👏",
+            // ... Imagine this list expanded to 500 messages with similar themes of music, art, drama, French, and admiration ...
+            "Your teaching was a melody of love, Mr. T! 🎶",
+            "Merci pour tout, vous êtes notre étoile! 🌟"
+        ];
+
+        // Function to rotate messages every 10 seconds
+        function rotateMessages() {
+            const leftMsg1 = document.getElementById('left-message-1');
+            const leftMsg2 = document.getElementById('left-message-2');
+            const rightMsg1 = document.getElementById('right-message-1');
+            const rightMsg2 = document.getElementById('right-message-2');
+
+            // Get random messages for left and right sides
+            const getRandomMessage = (array) => array[Math.floor(Math.random() * array.length)];
+            
+            // Update messages with fade effect
+            leftMsg1.style.opacity = 0;
+            leftMsg2.style.opacity = 0;
+            rightMsg1.style.opacity = 0;
+            rightMsg2.style.opacity = 0;
+
+            setTimeout(() => {
+                leftMsg1.textContent = getRandomMessage(leftMessages);
+                leftMsg2.textContent = getRandomMessage(leftMessages);
+                rightMsg1.textContent = getRandomMessage(rightMessages);
+                rightMsg2.textContent = getRandomMessage(rightMessages);
+
+                leftMsg1.style.opacity = 1;
+                leftMsg2.style.opacity = 1;
+                rightMsg1.style.opacity = 1;
+                rightMsg2.style.opacity = 1;
+            }, 1000); // Matches the CSS transition duration for a smooth fade
+        }
+
+        // Initial call and set interval for every 10 seconds
+        rotateMessages();
+        setInterval(rotateMessages, 10000);
+
+        // Functions to Show and Hide Comments Modals
+        function showComments(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            // Prevent scrolling on the background
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideComments(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            // Restore scrolling on the background
+            document.body.style.overflow = '';
+        }
+
+        // Functions to Show and Hide Likes Modals
+        function showLikes(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+            // Prevent scrolling on the background
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideLikes(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            // Restore scrolling on the background
+            document.body.style.overflow = '';
+        }
+
+        // Function to Shower Hearts on Like Click
+        function showerHearts(showerId) {
+            const showerContainer = document.getElementById(showerId);
+            showerContainer.innerHTML = ''; // Clear any existing hearts
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 0.5}s`;
+                showerContainer.appendChild(heart);
+                // Remove heart after animation completes
+                setTimeout(() => heart.remove(), 1000);
+            }
+        }
+
+        // Close modals when clicking outside the container
+        document.querySelectorAll('.comments-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideComments(modal.id);
+                }
+            });
+        });
+
+        document.querySelectorAll('.likes-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideLikes(modal.id);
+                }
+            });
+        });
+
+        // Close modals on ESC key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.comments-modal').forEach(modal => {
+                    if (modal.style.display === 'flex') {
+                        hideComments(modal.id);
+                    }
+                });
+                document.querySelectorAll('.likes-modal').forEach(modal => {
+                    if (modal.style.display === 'flex') {
+                        hideLikes(modal.id);
+                    }
+                });
+            }
+        });
+
+        // Music Button Functionality with Random Music List
+        const musicButton = document.getElementById('musicButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicSource = document.getElementById('musicSource');
+        let isPlaying = false;
+
+        // List of free music URLs inspired by Alan Walker style from reliable sources
+        const musicList = [
+            "https://cdn.freesound.org/previews/431/431801_5123851-lq.mp3" // Example of a free track, replaceable with Pixabay or local file
+        ];
+        
+        // Function to play a random track from the list
+        function playRandomMusic() {
+            const randomIndex = Math.floor(Math.random() * musicList.length);
+            musicSource.src = musicList[randomIndex];
+            backgroundMusic.load(); // Reload the audio element with the new source
+            backgroundMusic.volume = 0.025; // Set volume to a soothing level
+            backgroundMusic.play().catch(e => {
+                console.log("Music play error:", e);
+                // Fallback to local file if online source fails
+                if (musicSource.src.includes("freesound")) {
+                    musicSource.src = "images/audio_593a2d86e9.mp3"; // Local fallback
+                    backgroundMusic.load();
+                    backgroundMusic.play().catch(err => console.log("Local music play error:", err));
+                }
+            });
+            musicButton.textContent = '⏸️'; // Change button icon to pause
+            musicButton.title = 'Pause Music';
+            isPlaying = true;
+        }
+
+        // Function to stop music
+        function stopMusic() {
+            backgroundMusic.pause();
+            musicButton.textContent = '🎶'; // Change button icon to play
+            musicButton.title = 'Play Music';
+            isPlaying = false;
+        }
+
+        // Toggle music play/pause on button click
+        musicButton.addEventListener('click', () => {
+            if (isPlaying) {
+                stopMusic();
+            } else {
+                playRandomMusic();
+            }
+        });
+
+        // Autoplay music on page load
+        window.addEventListener('load', () => {
+            playRandomMusic();
+        });
+
+        // Ripple and Melting Heart Drop Effect on Background Click
+        const rippleContainer = document.getElementById('rippleContainer');
+
+        document.body.addEventListener('click', (e) => {
+            // Check if the click is on the background (not on posts, modals, or buttons)
+            if (!e.target.closest('.app-container, .comments-modal, .likes-modal, .music-button')) {
+                // Create a ripple group for multiple concentric ripples
+                const rippleGroup = document.createElement('div');
+                rippleGroup.className = 'ripple-group';
+                rippleGroup.style.left = `${e.clientX}px`;
+                rippleGroup.style.top = `${e.clientY}px`;
+                rippleContainer.appendChild(rippleGroup);
+
+                // Create multiple ripples with slight delays for water wave effect
+                for (let i = 0; i < 3; i++) {
+                    const ripple = document.createElement('div');
+                    ripple.className = 'ripple';
+                    const size = 80 + (i * 30); // Increasing size for each ripple
+                    ripple.style.left = `${-size/2}px`; // Center on click point
+                    ripple.style.top = `${-size/2}px`; // Center on click point
+                    ripple.style.width = `${size}px`;
+                    ripple.style.height = `${size}px`;
+                    ripple.style.animationDelay = `${i * 0.2}s`; // Delay for wave effect
+                    rippleGroup.appendChild(ripple);
+                }
+
+                // Create melting heart drops (3-5 drops for effect)
+                const dropCount = Math.floor(Math.random() * 3) + 3; // Random between 3-5
+                for (let i = 0; i < dropCount; i++) {
+                    const drop = document.createElement('div');
+                    drop.className = 'melting-heart-drop';
+                    drop.textContent = '❤️'; // Heart emoji for the drop
+                    // Random offset around click point for natural spread
+                    drop.style.left = `${e.clientX + (Math.random() * 40 - 20)}px`;
+                    drop.style.top = `${e.clientY + (Math.random() * 20 - 10)}px`;
+                    drop.style.animationDelay = `${Math.random() * 0.3}s`; // Slight delay variation
+                    rippleContainer.appendChild(drop);
+                    // Remove drop after animation
+                    setTimeout(() => drop.remove(), 2500);
+                }
+
+                // Create bubbling hearts like Instagram Live (5-8 hearts for effect)
+                const heartCount = Math.floor(Math.random() * 4) + 5; // Random between 5-8
+                for (let i = 0; i < heartCount; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'bubbling-heart';
+                    heart.textContent = '❤️'; // Heart emoji for bubbling effect
+                    // Random offset around click point for natural spread
+                    heart.style.left = `${e.clientX + (Math.random() * 50 - 25)}px`;
+                    heart.style.top = `${e.clientY + (Math.random() * 30 - 15)}px`;
+                    heart.style.animationDelay = `${Math.random() * 0.4}s`; // Slight delay variation
+                    rippleContainer.appendChild(heart);
+                    // Remove heart after animation
+                    setTimeout(() => heart.remove(), 1800);
+                }
+
+                // Remove ripple group after animation
+                setTimeout(() => rippleGroup.remove(), 2500);
+            }
+        });
+
+        // Dynamic Click Handlers for Likes and Comments
+        document.querySelectorAll('.post-footer .likes').forEach(likesElement => {
+            likesElement.addEventListener('click', () => {
+                const modalId = likesElement.getAttribute('data-likes-id');
+                const heartId = likesElement.getAttribute('data-heart-id');
+                if (modalId) {
+                    showLikes(modalId);
+                }
+                if (heartId) {
+                    showerHearts(heartId);
+                }
+            });
+        });
+
+        document.querySelectorAll('.post-footer .comments').forEach(commentsElement => {
+            commentsElement.addEventListener('click', () => {
+                const modalId = commentsElement.getAttribute('data-comments-id');
+                if (modalId) {
+                    showComments(modalId);
+                }
+            });
+        });
+
+        // Close Buttons for Likes Modals
+        document.querySelectorAll('.close-likes').forEach(closeButton => {
+            closeButton.addEventListener('click', () => {
+                const modalId = closeButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                hideLikes(modalId);
+            });
+        });
+
+        // Close Buttons for Comments Modals
+        document.querySelectorAll('.close-comments').forEach(closeButton => {
+            closeButton.addEventListener('click', () => {
+                const modalId = closeButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                hideComments(modalId);
+            });
+        });
+
+        // Zoom-in and Zoom-out Effect for Chat Photos
+        document.querySelectorAll('.post-image').forEach(image => {
+            image.addEventListener('click', () => {
+                // Add zoomed class to trigger zoom-in
+                image.classList.add('zoomed');
+                // Remove zoomed class after 3 seconds to return to original state
+                setTimeout(() => {
+                    image.classList.remove('zoomed');
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
